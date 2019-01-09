@@ -19,16 +19,16 @@ import com.fxtcn.platform.config.properties.CommonDataSourceConfigProperty;
 @Configuration
 public class CommonConfig {
 	@Autowired
-	private DataSourceConfig shareniuDataSourceConfig;
+	private DataSourceConfig dataSourceConfig;
 	@Autowired
 	private CommonDataSourceConfigProperty commonDataSourceConfig;
 	@Primary
 	public DataSource DataSource() {
 		DruidDataSource ds=new DruidDataSource();
-		ds.setUrl(shareniuDataSourceConfig.getUrl());
-		ds.setUsername(shareniuDataSourceConfig.getUsername());
-		ds.setPassword(shareniuDataSourceConfig.getPassword());
-		ds.setDriverClassName(shareniuDataSourceConfig.getDriverClassName());
+		ds.setUrl(dataSourceConfig.getUrl());
+		ds.setUsername(dataSourceConfig.getUsername());
+		ds.setPassword(dataSourceConfig.getPassword());
+		ds.setDriverClassName(dataSourceConfig.getDriverClassName());
 		
 		ds.setInitialSize(commonDataSourceConfig.getInitialSize());
 		ds.setMinIdle(commonDataSourceConfig.getMinIdle());
@@ -40,7 +40,7 @@ public class CommonConfig {
 	}
 	
 	@Bean
-	public DataSourceTransactionManager  shareniuDataSourceTransactionManager(DataSource dataSource) {
+	public DataSourceTransactionManager  dataSourceTransactionManager(DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
 	

@@ -29,11 +29,11 @@ public class CustomHandlerInterceptor implements HandlerInterceptor {
 			user.setId("admin");
 			SecurityUtils.assumeUser(user);
 		}
-		Object obj = request.getSession().getAttribute(Const.SESSION_USER);
-		if (obj == null) {
-			response.sendRedirect("/");
-			return false;
-		}
+//		Object obj = request.getSession().getAttribute(Const.SESSION_USER);
+//		if (obj == null) {
+//			response.sendRedirect("/");
+//			return false;
+//		}
 
 		return true;
 	}
