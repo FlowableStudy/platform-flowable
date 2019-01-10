@@ -1,5 +1,6 @@
 package com.fxtcn.platform;
 
+import org.flowable.ui.common.rest.idm.remote.RemoteAccountResource;
 import org.flowable.ui.modeler.properties.FlowableModelerAppProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +9,7 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
 
 @SpringBootApplication(
 		exclude= {
@@ -17,7 +19,13 @@ import org.springframework.context.annotation.ComponentScan;
 			LiquibaseAutoConfiguration.class
 			}
 		)
-@ComponentScan(basePackages = {"com.fxtcn.platform","org.flowable.ui"})
+@ComponentScan(basePackages = {"com.fxtcn.platform",
+										"org.flowable.ui"
+										
+										},
+				excludeFilters= @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {RemoteAccountResource.class})
+						)
+
 public class PlatformFlowableApplication {
 
 	public static void main(String[] args) {
