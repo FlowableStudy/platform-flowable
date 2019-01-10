@@ -43,8 +43,11 @@
   翻译此两个文件中的title和description的值。
 
 
+## 三、创建数据库
 
-## 三、启动
+​	根据/src/main/resources/application.properties配置的环境，修改对应的/src/main/resources/application-**dev**.properties或/src/main/resources/application-**test**.properties中数据源的配置。
+
+## 四、启动
 
 浏览器访问：http://localhost:9999/modeler/index.htm
 
